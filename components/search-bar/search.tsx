@@ -1,6 +1,7 @@
 import { Button } from "../ui/button";
 import { Search as SearchIcon } from "lucide-react";
 import { SearchCategories } from "./search-categories";
+import { SearchAutocompleteInput } from "./search-autocomplete-input";
 
 type SearchProps = {
   action?: string;
@@ -23,13 +24,7 @@ export const Search = ({
         <SearchCategories defaultValue={defaultCategory} />
       </div>
       <div className="flex-2">
-        <input
-          id="search-q"
-          name="q"
-          defaultValue={defaultQuery}
-          placeholder="Search medicine, medical products"
-          className="h-14 w-full bg-transparent px-4 text-sm text-[#444] outline-none placeholder:text-[#7a7a7a]"
-        />
+        <SearchAutocompleteInput />
       </div>
       <div className="bg-yellow-500 ml-10">
         <Button

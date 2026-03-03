@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const q = (searchParams.get("q") ?? "").trim();
-  const categorySlug = searchParams.get("category") ?? "all";
+  const categorySlug = (searchParams.get("category") ?? "").trim() || "all";
 
   if (!q) return NextResponse.json({ data: [] });
 

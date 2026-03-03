@@ -1,7 +1,5 @@
-import { Button } from "../ui/button";
-import { Search as SearchIcon } from "lucide-react";
-import { SearchCategories } from "./search-categories";
-import { SearchAutocompleteInput } from "./search-autocomplete-input";
+import { getCategories } from "@/app/actions/categories";
+import { SearchClient } from "./search-client";
 
 type SearchProps = {
   action?: string;
@@ -9,31 +7,19 @@ type SearchProps = {
   defaultCategory?: string;
 };
 
-export const Search = ({
+export const Search = async ({
   action = "/",
   defaultQuery = "",
   defaultCategory = "all",
 }: SearchProps) => {
+  const categories = await getCategories();
+
   return (
-    <form
-      method="get"
+    <SearchClient
       action={action}
-      className="flex items-center justify-between gap-1.5 relative w-full border max-w-2xl p-4 rounded-md h-15"
-    >
-      <div className="flex-1">
-        <SearchCategories defaultValue={defaultCategory} />
-      </div>
-      <div className="flex-2">
-        <SearchAutocompleteInput />
-      </div>
-      <div className="bg-yellow-500 ml-10">
-        <Button
-          type="submit"
-          className="h-15.25 w-15 cursor-pointer absolute -right-0.5 -bottom-0.5 rounded-md p-0"
-        >
-          <SearchIcon className="size-6" />
-        </Button>
-      </div>
-    </form>
+      defaultQuery={defaultQuery}
+      defaultCategory={defaultCategory}
+      categories={categories}
+    />
   );
 };

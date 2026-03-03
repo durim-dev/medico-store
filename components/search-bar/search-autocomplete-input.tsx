@@ -8,34 +8,33 @@ type Item = { id: string; name: string; image_url: string; slug: string };
 
 export function SearchAutocompleteInput({
   defaultQuery = "",
-  categorySelectId = "search-category",
+  category = "all",
 }: {
   defaultQuery?: string;
-  categorySelectId?: string;
+  category?: string;
 }) {
   const [q, setQ] = useState(defaultQuery);
   const [items, setItems] = useState<Item[]>([]);
   const hasQuery = q.trim().length > 0;
 
   useEffect(() => {
+    setQ(defaultQuery);
+  }, [defaultQuery]);
+
+  useEffect(() => {
     const t = setTimeout(async () => {
       if (!hasQuery) return setItems([]);
-
-      const category =
-        (document.getElementById(categorySelectId) as HTMLSelectElement | null)
-          ?.value ?? "all";
 
       const res = await fetch(
         `/api/products/suggest?q=${encodeURIComponent(q)}&category=${encodeURIComponent(category)}`,
       );
+
       const json = await res.json();
       setItems(json.data ?? []);
     }, 250);
 
     return () => clearTimeout(t);
-  }, [q, categorySelectId, hasQuery]);
-
-  console.log({ items });
+  }, [q, category, hasQuery]);
 
   return (
     <div className="relative flex-1">

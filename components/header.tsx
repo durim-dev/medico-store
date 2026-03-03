@@ -2,6 +2,7 @@ import { Heart, ShoppingBag } from "lucide-react";
 import { Logo } from "./logo";
 import { ProfileView } from "./profile";
 import { Search } from "./search-bar/search";
+import Link from "next/link";
 
 export const Header = () => {
   return (
@@ -13,10 +14,14 @@ export const Header = () => {
 
         <div className="order-2 ml-auto flex items-center gap-4 lg:order-3 md:ml-0">
           <div>
-            <Heart />
+            <Link href="/wishlist">
+              <Heart />
+            </Link>
           </div>
           <div>
-            <ShoppingBag />
+            <Link href="/cart">
+              <ShoppingBag />
+            </Link>
           </div>
           <div>
             <ProfileView />

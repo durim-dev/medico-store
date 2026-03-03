@@ -43,7 +43,11 @@ export function SearchAutocompleteInput({
         value={q}
         onChange={(e) => setQ(e.target.value)}
         placeholder="Search medicine, medical products"
-        className="h-14 w-full bg-transparent px-4 pr-10 text-sm outline-none"
+        className="h-14 w-full bg-transparent px-4 pr-10 text-sm 
+             placeholder:text-xs 
+             sm:placeholder:text-sm 
+             md:placeholder:text-base 
+             outline-none"
       />
 
       {hasQuery ? (

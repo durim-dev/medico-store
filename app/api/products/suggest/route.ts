@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { getCategoryIdBySlug } from "@/lib/categories";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -12,14 +13,8 @@ export async function GET(req: Request) {
 
   let categoryId: string | null = null;
   if (categorySlug !== "all") {
-    const { data: category } = await supabase
-      .from("categories")
-      .select("id")
-      .eq("slug", categorySlug)
-      .maybeSingle();
-
-    if (!category) return NextResponse.json({ data: [] });
-    categoryId = category.id;
+    categoryId = await getCategoryIdBySlug(categorySlug);
+    if (!categoryId) return NextResponse.json({ data: [] });
   }
 
   let query = supabase

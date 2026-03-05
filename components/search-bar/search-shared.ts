@@ -1,10 +1,8 @@
+import type { Category } from "@/lib/category-types";
+
 export const ALL_CATEGORY = "all";
 
-export type SearchCategory = {
-  id: string;
-  name: string;
-  slug: string;
-};
+export type SearchCategory = Category;
 
 type SearchParamsLike = {
   get(name: string): string | null;

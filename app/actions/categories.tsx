@@ -1,19 +1,7 @@
 "use server";
 
-import { createClient } from "@/lib/supabase/server";
+import { getCategories as getSharedCategories } from "@/lib/categories";
 
 export async function getCategories() {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase
-    .from("categories")
-    .select("id, name, slug")
-    .order("name", { ascending: true });
-
-  if (error) {
-    console.error("Error fetching categories:", error.message);
-    return [];
-  }
-
-  return data;
+  return getSharedCategories();
 }

@@ -1,4 +1,4 @@
-import { getCategories } from "@/app/actions/categories";
+import { getCategories } from "@/lib/categories";
 import { SearchClient } from "./search-client";
 
 type SearchProps = {

@@ -92,4 +92,5 @@ export async function addProductToCart(productId: string) {
   }
 
   revalidatePath("/cart");
+  revalidatePath("/", "layout");
 }

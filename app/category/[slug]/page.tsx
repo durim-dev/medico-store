@@ -20,7 +20,7 @@ export default async function Page({
   const products = await getActiveProductsByCategoryId(category.id);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-6">
+    <div className="px-2 py-8">
       <nav className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
         <Link href="/" className="transition-colors hover:text-primary">
           Home

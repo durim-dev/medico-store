@@ -26,9 +26,8 @@ export const HeaderCategoryNav = ({ categories }: HeaderCategoryNavProps) => {
               <Link
                 href={href}
                 className={cn(
-                  "inline-flex rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
-                  isActive &&
-                    "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground",
+                  "inline-flex rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary",
+                  isActive && "text-primary",
                 )}
                 aria-current={isActive ? "page" : undefined}
               >

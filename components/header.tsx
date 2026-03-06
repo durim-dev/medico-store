@@ -11,7 +11,7 @@ export const Header = async () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-backdrop-filter:bg-white/80">
-      <div className="container mx-auto mb-2.5 flex flex-wrap items-center gap-6 p-4 py-6 md:justify-between md:border-b pb-11">
+      <div className="container mx-auto flex flex-wrap items-center gap-6 p-4 py-6 md:justify-between md:border-b">
         <div className="order-1">
           <Logo />
         </div>

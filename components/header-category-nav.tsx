@@ -16,7 +16,7 @@ export const HeaderCategoryNav = ({ categories }: HeaderCategoryNavProps) => {
 
   return (
     <nav aria-label="Categories" className="container mx-auto overflow-x-auto">
-      <ul className="flex min-w-max items-center gap-1 py-3">
+      <ul className="flex min-w-max items-center gap-1 py-1.5">
         {categories.map((category) => {
           const href = `/category/${category.slug}`;
           const isActive = pathname === href;
